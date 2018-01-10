@@ -36,7 +36,7 @@ class CiscoDeviceInfoScraper(object):
             'sh ver | i System Serial Number'
         ).split()
         if len(int_sn) == 0:
-            int_sn = device.send_command(
+            int_sn = d.send_command(
             'sh ver | i System serial number'
             ).split()
         # Single Device
@@ -52,7 +52,7 @@ class CiscoDeviceInfoScraper(object):
             'sh ver | i Model Number'
         ).split()
         if len(int_mod) == 0:
-            int_mod = device.send_command(
+            int_mod = d.send_command(
             'sh ver | i Model number'
             ).split()
         # Single Device
@@ -113,6 +113,7 @@ class CiscoDeviceInfoScraper(object):
                             hn, ip, sn, mod, ios
                         )
                     )
+                device.cleanup()
             except n.ssh_exception.NetMikoTimeoutException:
                 print("Unable to SSH to IP Address : %s" % ip)
         print("Finished, time for a beer!")
