@@ -44,7 +44,7 @@ class CiscoDeviceInfoScraper(object):
         # Stacked Device
         elif len(int_sn) > 5: return int_sn[4::5]
         # Not supported
-        elif len(int_sn) == 0: return ['ERROR']
+        else: return ['ERROR']
 
     def _model_number(self, d):
         """Collect Model Number"""
@@ -60,7 +60,7 @@ class CiscoDeviceInfoScraper(object):
         # Stacked Device
         elif len(int_mod) > 4: return int_mod[3::4]
         # Not supported
-        elif len(int_mod) == 0: return ['ERROR']
+        else: return ['ERROR']
 
     def _ios_version(self, d):
         """Collect IOS Version"""
